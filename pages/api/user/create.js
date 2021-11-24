@@ -1,52 +1,51 @@
-import { query as q, Documents, Collection } from 'faunadb'
+import { query as q, Documents, Collection } from "faunadb";
 
-import faunaClient from '../../db/db'
+import faunaClient from "../../../db/db";
 
 export default async (req, res) => {
-  if (req.method !== 'POST') {
-    res.send('shame')
-    return
+  if (req.method !== "POST") {
+    res.send("shame");
+    return;
   }
 
-  const { id, password } = req.body
-  if (!id) {
-    res.send('No id specified')
-    return
+  const player = req.body.player;
+  const password = req.body.password;
+  const regex = /[^A-z\s\d][\\\^]?/g
+
+  if (!player) {
+    res.send("SHAME. ENTER THE ONE TO BE SHAMED UPON");
+    return;
+  }
+
+  if (player.match(regex)) {
+    res.send("SHAME. NO SPECIAL CHARACTERS ALLOWED");
+    return;
   }
 
   if (password !== process.env.PASSWORD_WEBSITE) {
-    res.send('SHAME. BEGONE BEFORE I SEND IN A POLICE ASSAULT')
-    return
+    res.send("SHAME. BEGONE BEFORE I SEND IN A POLICE ASSAULT");
+    return;
   }
 
-  const docReference = q.Ref(
-    q.Collection('fuckup-counter'),
-    id
-  )
+  const docReference = q.Collection("fuckup-counter");
 
-  const increment = await faunaClient.query(
-    q.Update(
-      docReference,
-      {
+  const createPlayer = await faunaClient
+    .query(
+      q.Create(docReference, {
         data: {
-          count: q.Add(
-            q.Select(
-              ['data', 'count'],
-              q.Get(docReference)
-            ),
-            1
-          )
-        }
-      }
+          count: 0,
+          id: player,
+          name: player[0].toUpperCase() + player.slice(1),
+        },
+      })
     )
-  ).catch((err) => {
-    res.send('oopsie doopsie, error happened, probably because the id doesn\'t exist, so stop ducking around :)')
-  })
+    .catch((err) => {
+      res.send(err);
+    });
 
-  if (!increment) {
-    return
+  if (!createPlayer) {
+    return;
   }
 
-  res.json(increment.data)
-}
-
+  return createPlayer.data
+};
