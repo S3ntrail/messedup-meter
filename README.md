@@ -22,20 +22,11 @@ Once done please make sure you have a .env file in order to use the db file
 
 ```bash
 API_KEY=
+PASSWORD_WEBSITE=
 ```
 
-If you are done with the previous step please make a file in your root folder : next.config.js
-You can copy and paste the following code in the config file
-
-```
-module.exports = {
-  env: {
-    PASSWORD_WEBSITE: 'Your_Password',
-  },
-}
-```
-
-For some reason the .env doesnt work or gives 'undefined'. So kinda a workaround but it works.
+Please remember to use an API key from [Fauna](https://fauna.com/) in order to update and fetch from the database.
+Regarding the PASSWORD_WEBSITE this can be anything to your liking. As long your partners in crime can remember the password.
 
 ## Usage
 This open-source project uses NextJs. See the [Next.js](https://nextjs.org/) documentation 
