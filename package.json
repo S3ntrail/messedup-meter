@@ -12,7 +12,8 @@
     "next": "^10.0.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-use": "^15.3.4"
+    "react-use": "^15.3.4",
+    "reactjs-popup": "^2.0.5"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
