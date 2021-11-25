@@ -8,15 +8,13 @@ export default async (req, res) => {
     return;
   }
 
-  const player = req.body.player;
-  const password = req.body.password;
-  const regex = /[^A-z\s\d][\\\^]?/g
-
+  const { player, password} = req.body
   if (!player) {
     res.send("SHAME. ENTER THE ONE TO BE SHAMED UPON");
     return;
   }
 
+  const regex = /[^A-z\s\d][\\\^]?/g
   if (player.match(regex)) {
     res.send("SHAME. NO SPECIAL CHARACTERS ALLOWED");
     return;

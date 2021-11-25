@@ -65,7 +65,10 @@ export default function Main() {
                 >
                   <div className="bg-gray-900 rounded-lg">
                     <div className="flex gap-2 m-4 bg-gray-900 float-right m-auto">
-                      <Menu />
+                      <Menu 
+                        id={user.ref}
+                        password={inputRef.current.value}
+                      />
                     </div>
                   </div>
 
