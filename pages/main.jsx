@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { useInterval } from "react-use";
 
+import Menu from '../components/Menu/Menu'
+
 export default function Main() {
   const inputRef = useRef(null);
   const [currentCounters, setCurrentCounters] = useState();
@@ -53,14 +55,20 @@ export default function Main() {
 
   return (
     <main>
-      <div className="container text-gray-200">
+      <div className="w-full text-gray-200">
         <div className="grid grid-cols-2 gap-4">
           {currentCounters && currentCounters.length > 0
             ? currentCounters.map((user) => (
                 <div
-                  className="w-full bg-gray-900 rounded-lg p-12 flex flex-col"
+                  className="w-full bg-gray-900 rounded-lg p-8 flex flex-col"
                   key={user.ref}
                 >
+                  <div className="bg-gray-900 rounded-lg">
+                    <div className="flex gap-2 m-4 bg-gray-900 float-right m-auto">
+                      <Menu />
+                    </div>
+                  </div>
+
                   <div className="mb-2">
                     <h1 className="text-5xl font-semibold bg-gray-900 text-center">
                       {user.name}

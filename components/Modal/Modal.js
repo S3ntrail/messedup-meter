@@ -37,7 +37,7 @@ export default function Modal() {
   }
 
   return (
-    <Popup trigger={<button className="transition duration-500 ease-in-out border-2 border-gray-200 p-2 text-gray-200 transform hover:border-green-400 hover:text-green-500"> Add a new player </button>} modal>
+    <Popup trigger={<button className="transition duration-500 ease-in-out border-2 border-gray-200 p-2 text-gray-200 transform hover:border-green-400 hover:text-green-500"> Add a new player </button>} modal nested>
       {(close) => (
         <div className="border-2 rounded">
           <button className="transition duration-500 ease-in-out text-white text-4xl transform hover:text-red-500" onClick={close}>
