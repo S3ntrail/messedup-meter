@@ -6,6 +6,9 @@ messedup-meter is a small project where we count each other mistakes in the popu
 
 messedup-meter is still work in progress with plans to make it more open and dynamic to the public use. Very handy to laugh at your friends or to use it for discussions
 
+## Deploy on vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FS3ntrail%2Fmessedup-meter)
+
 ## Installation / Setup
 
 Once forked. Please don't forget to install the packages and dependency's.  
